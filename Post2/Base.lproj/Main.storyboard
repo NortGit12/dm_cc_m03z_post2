@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n9b-aX-woh">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Posts List Table View Controller-->
+        <scene sceneID="u4Y-rS-m34">
+            <objects>
+                <tableViewController id="dzu-Wt-n1Q" customClass="PostsListTableViewController" customModule="Post2" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" id="LLs-Ba-sWV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postsListCell" rowHeight="68" id="x1p-pU-yqs" customClass="PostsListTableViewCell" customModule="Post2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="68"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x1p-pU-yqs" id="OQx-RW-9PD">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jdk-fT-LBb">
+                                            <rect key="frame" x="0.0" y="34" width="600" height="0.0"/>
+                                        </activityIndicatorView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="B2n-Vq-HoI">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oka-67-DKE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Time and Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXV-rZ-7Zt">
+                                                    <rect key="frame" x="0.0" y="52" width="600" height="15"/>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wXV-rZ-7Zt" firstAttribute="top" secondItem="oka-67-DKE" secondAttribute="bottom" id="C86-vy-Q8a"/>
+                                                <constraint firstItem="wXV-rZ-7Zt" firstAttribute="leading" secondItem="B2n-Vq-HoI" secondAttribute="leading" id="DX7-u4-hZF"/>
+                                                <constraint firstAttribute="trailing" secondItem="wXV-rZ-7Zt" secondAttribute="trailing" id="XF4-FA-SAU"/>
+                                                <constraint firstItem="oka-67-DKE" firstAttribute="leading" secondItem="B2n-Vq-HoI" secondAttribute="leading" id="hhJ-vG-61m"/>
+                                                <constraint firstItem="oka-67-DKE" firstAttribute="top" secondItem="B2n-Vq-HoI" secondAttribute="top" id="kV9-rc-XIr"/>
+                                                <constraint firstAttribute="trailing" secondItem="oka-67-DKE" secondAttribute="trailing" id="vxG-r2-0Cf"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="B2n-Vq-HoI" firstAttribute="leading" secondItem="OQx-RW-9PD" secondAttribute="leading" id="G32-ye-lYF"/>
+                                        <constraint firstAttribute="bottom" secondItem="B2n-Vq-HoI" secondAttribute="bottom" id="cw1-K0-SM1"/>
+                                        <constraint firstAttribute="trailing" secondItem="B2n-Vq-HoI" secondAttribute="trailing" id="eA8-Er-PJ4"/>
+                                        <constraint firstItem="B2n-Vq-HoI" firstAttribute="top" secondItem="OQx-RW-9PD" secondAttribute="top" id="r4Y-zG-DUR"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="messageLabel" destination="oka-67-DKE" id="UiA-94-eof"/>
+                                    <outlet property="timeAndUsernameLabel" destination="wXV-rZ-7Zt" id="eL3-mw-6UV"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dzu-Wt-n1Q" id="AlA-KF-8k1"/>
+                            <outlet property="delegate" destination="dzu-Wt-n1Q" id="3EA-pw-DvX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="BD5-OE-Qhw">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="xwv-ax-akQ">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="dzu-Wt-n1Q" id="1W0-Jy-onk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="h5W-Zo-lRm">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0bt-1e-sbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1205" y="504"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Gvc-n3-91e">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n9b-aX-woh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bo2-1j-qDp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dzu-Wt-n1Q" kind="relationship" relationship="rootViewController" id="dYg-8T-U2g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e5E-qz-HTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="393" y="504"/>
+        </scene>
+    </scenes>
+</document>
