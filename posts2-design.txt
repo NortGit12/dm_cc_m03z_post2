@@ -1,0 +1,86 @@
+//=================================
+// Post2 Design
+//=================================
+
+Model
+	*Post
+		*Stored Properties
+			*Class variables
+				*identifier: NSUUID
+				*message: String
+				*username: String
+				*date: NSDate
+				*private let keys for use with dictionaries
+			*Computed properties
+				*for helpfulness
+					*descriptionString: String {}
+					*dateString: String {}
+				*for Put
+					*dictionaryValue (for serialization from class instance to dictionary)
+					*jsonData (for serialization from dictionary to JSON data)
+					*addPostEndpoint
+		*Initializer(s)
+			*init(message: String, username: String) (for serialization creating instances during addPost)
+			*Failable (for deserialization, creating instances during getPosts) - init(dictionary: [String : AnyObject])
+
+
+ModelController
+	*PostController
+		*Stored Properties
+			*baseURL
+			*getterURL
+			*posts: [Post] (with a didSetObserver)
+			*delegate: PostDelegate?
+		*Initializer(s)
+			*init() (calls getPosts and populates posts array)
+		*Methods
+			*addPost(username: String, message: String) (creates Post instance, makes NetworkController call (inside completion: on success updates self.posts))
+			*getPosts
+		*Protocol
+			*PostDelegate
+				*func postsUpdated(posts: [Post])
+	*NetworkController
+
+
+ViewController
+	*PostListTableViewController
+		*Inheritance: PostDelegate
+		*Methods
+			*viewDidLoad
+				*postController.delegate = self
+			*func postsUpdated(posts: [Post]) (tableView.reloadData())
+			*numberOfRowsInSection
+			*cellForRowAtIndexPath
+			*@IBAction addButtonTapped(...) (calls presentAddPostAlert)
+			*func presentAddPostAlert
+				*addPost UIAlertAction (call PostController.addPost)
+				*cancelPost UIAlertAction (nothing)
+				*if message and/or username is empty, call presentErrorAlert
+			*func presentErrorAlert
+				*retryAction: UIAlertAction (in completion call presentAddPostAlert)
+				*cancelAction: UIAlertAction (nothing)
+	*PostListTableViewCell
+		*Stored Properties
+			*@IBOutlet weak var messageLabel: UILabel!
+			*@IBOutlet weak var infoLabel: UILabel!
+		*Methods
+			*updateWithPost(post: Post) (updates the labels' contents)
+
+
+View
+	*TableViewController
+		*Views
+			*Add button (triggers addButtonTapped)
+			*Custom TableViewCell (PostListTableViewCell)
+		*Behaviors
+			*Update network activity indicator icon in status bar (?) at the top
+			*Pull to refresh
+			*Variable cell heights
+			*Page network requests
+	*PostTableViewCell
+		*messageLabel (message body)
+		*infoLabel (time & username)
+
+
+
+
